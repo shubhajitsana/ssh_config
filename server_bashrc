@@ -1,0 +1,19 @@
+# .bashrc for KEKCC
+
+# stop asking password again and again
+unset SSH_ASKPASS
+# prompt
+export PS1="[\u@\h \W]$ "
+
+# aliases
+alias ls='ls -vF --color=auto'
+alias ll='ls -vlh --color=auto'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# aliases
+alias bsfl="source /cvmfs/belle.cern.ch/tools/b2setup light-2207-bengal"
+alias bsffull="source /cvmfs/belle.cern.ch/tools/b2setup release-06-00-14"
+alias ssup="rsync -vaz /home/sana/ssana/ kekcc:/home/belle2/ssana/ssana"
+alias jupy="bsffull && jupyter notebook --port=8080 --no-browser"

@@ -1,0 +1,38 @@
+ServerAliveInterval 60
+ControlMaster auto
+ControlPath /tmp/ssh_mux_%h_%p_%r
+ControlPersist 1000h
+# ServerAliveCountMax 1000
+Host kekcc
+    User ssana
+    Hostname login.cc.kek.jp
+    Compression yes
+    # NB: change the path to the IdentityFile to point to your own SSH key.
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+    # Don't connect directly but rather via the gateway server
+    ProxyJump sshcc1.kek.jp
+    # ControlMaster auto
+    # ControlPath ~/.ssh/%r@%h:%p.control
+    # ControlPersist 30m
+
+Host sshcc1.kek.jp
+    User ssana
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+    # ControlMaster auto
+    # ControlPath ~/.ssh/%r@%h:%p.control
+    # ControlPersist 30m
+
+Host vkk
+    User ssana
+    Hostname login.cc.kek.jp
+    Compression yes
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host desy
+    User ssana
+    Hostname bastion.desy.de
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
